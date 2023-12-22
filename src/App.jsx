@@ -1,18 +1,14 @@
-import { useState } from 'react'
-import Button from "./components/button/button.jsx";
+import Card from './components/Card/Card.jsx';
+import cources from './data.js';
 
-function App() {
-  const [count1, setCount2] = useState(0)
-
-  return (
-    <>
-      <div>
-          This is my 1st component<br/>
-        <Button/>
-      </div>
-
-    </>
-  )
-}
+const App = () => {
+    return (
+        <div className="app">
+            {cources.map(course => (
+                <Card key={course.id} course={course} />
+            ))}
+        </div>
+    );
+};
 
 export default App
