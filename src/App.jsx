@@ -1,14 +1,13 @@
-import Card from './components/Card/Card.jsx';
-import cources from './data.js';
+import Counter from './components/Counter/Counter.jsx';
+import React from 'react';
 
 const App = () => {
     return (
-        <div className="app">
-            {cources.map(course => (
-                <Card key={course.id} course={course} />
-            ))}
+        <div>
+            <h1>Counter</h1>
+            <Counter />
         </div>
     );
 };
 
-export default App
+export default App;
