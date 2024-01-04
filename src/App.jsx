@@ -1,12 +1,16 @@
-import MyRequest from './components/Request/Request.jsx';
-import React from "react";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UserListPage from './components/User/UserList.jsx';
+import UserDetailPage from './components/User/UserDetails.jsx';
 
 const App = () => {
     return (
-        <div>
-            <h1>Мy request</h1>
-            <MyRequest />
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<UserListPage />} />
+                <Route path="/user/:userId" element={<UserDetailPage />} />
+            </Routes>
+        </Router>
     );
 };
 
