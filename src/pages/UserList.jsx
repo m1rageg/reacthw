@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from './UserContext';
 
 const UserListPage = () => {
-    const [users, setUsers] = useState([]);
-
-    const fetchUsers = async () => {
-        try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-            setUsers(response.data);
-        } catch (error) {
-            console.error('Error fetching users:', error);
-        }
-    };
+    const { user, setLoggedInUser } = useUser();
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        setLoggedInUser({ id: 1, name: 'John Doe' });
+    }, [setLoggedInUser]);
 
     return (
         <div>
             <h2>User List</h2>
+            {user && <p>Logged in as: {user.name}</p>}
             <ul>
-                {users.map(user => (
-                    <li key={user.id}>
-                        <Link to={`/user/${user.id}`}>{user.name}</Link>
-                    </li>
-                ))}
+                <li>
+                    <Link to="/user/1">User 1</Link>
+                </li>
+                <li>
+                    <Link to="/user/2">User 2</Link>
+                </li>
             </ul>
         </div>
     );

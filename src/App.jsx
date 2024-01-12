@@ -1,16 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import UserListPage from './pages/UserList.jsx';
-import UserDetailPage from './pages/UserDetails.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import UserListPage from './pages/UserList';
+import UserDetailPage from './pages/UserDetails';
+import { UserProvider } from './pages/UserContext';
 
 const App = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<UserListPage />} />
-                <Route path="/user/:userId" element={<UserDetailPage />} />
-            </Routes>
-        </Router>
+        <UserProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<UserListPage />} />
+                    <Route path="/user/:userId" element={<UserDetailPage />} />
+                </Routes>
+            </Router>
+        </UserProvider>
     );
 };
 
